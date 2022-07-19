@@ -1,6 +1,7 @@
 import subprocess
 import json
 import re
+import uuid
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -16,14 +17,16 @@ pattern = "⋮┆----------------------------------------\\n\s\s\s\s\s[a-z]"
 
 def runScan(repo):
     repository = repo['repo']
-    getRepo = subprocess.run(["git", "clone",repository.encode(),".test"],capture_output=True, text=True)
+    fileName = "."+str(uuid.uuid1())
+    fileDir = "./"+fileName+"/"
+    getRepo = subprocess.run(["git", "clone",repository.encode(),fileName],capture_output=True, text=True)
     if(repo['rule'] == "secrets"):
-        result = subprocess.run(secrets, cwd='./.test',capture_output=True, text=True)
+        result = subprocess.run(secrets, cwd=fileDir,capture_output=True, text=True)
     elif(repo['rule'] == "bsa"):
-        result = subprocess.run(bsa, cwd='./.test',capture_output=True, text=True)
+        result = subprocess.run(bsa, cwd=fileDir,capture_output=True, text=True)
     elif(repo['rule'] == "full"):
-        result = subprocess.run(full, cwd='./.test',capture_output=True, text=True)
-    subprocess.run(["rm","-rf",".test/"])
+        result = subprocess.run(full, cwd=fileDir,capture_output=True, text=True)
+    subprocess.run(["rm","-rf",fileName])
     data = result.stdout.split("Findings:")[1].strip().split("\n\n\n")
     finalData = []
     for value in data:
