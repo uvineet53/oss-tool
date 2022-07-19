@@ -1,0 +1,4 @@
+semgrep
+requests
+fastapi
+uvicorn
