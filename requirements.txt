@@ -1,4 +1,4 @@
 semgrep
 requests
-fastapi
-uvicorn
+flask
+flask_cors
