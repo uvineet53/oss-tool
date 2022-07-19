@@ -10,7 +10,7 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  let url = "http://127.0.0.1:8000/scan"
+  let url = "http://127.0.0.1:5000/scan"
   let sampleRepo = "https://github.com/0c34/govwa"
   const [config, setConfig] = useState("bsa");
   const [repo, setRepo] = useState(sampleRepo);
