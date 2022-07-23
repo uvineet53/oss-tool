@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useSearchParams } from 'react-router-dom';
 
 const Error = () => {
-  const navigate = useNavigate();
-  const [error, setError] = useState([]);
-  useEffect(() => {
-    const token = localStorage.getItem("infoVulnerability");
-    if (token) {
-      setError(token);
-    } else {
-      navigate("/");
-    }
-  },[]);
-  return <div>{error}</div>;
-};
+  const [search] = useSearchParams();
+  let temp = search.get('id');
+  let decoded = JSON.parse(temp);
 
-export default Error;
+  function Print(props){
+    let temp = props.info.split('⋮┆----------------------------------------\n');
+    return (temp.map((doc)=>{
+      return <p>{doc}</p>
+    }))
+  }
+  return (
+    <div id='box'>
+     <strong>{decoded.file}</strong>
+     <br/>
+     {decoded.issues.map((doc)=>{
+      return <p>
+          {<Print info={doc.details}/>}
+        </p>
+     })}
+    </div>
+  )
+}
+
+export default Error

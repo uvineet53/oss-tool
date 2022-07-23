@@ -31,10 +31,9 @@ function Main() {
       rule: config,
     };
     axios.post(url, data).then((e) => {
-      navigate('/page');
-      localStorage.setItem('infoVulnerability',e.data);
       console.log(e.data);
     });
+    navigate('/tipIceBerg');
   };
   return (
     <>

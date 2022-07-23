@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+body{
+  background-color: aquamarine;
+}
+#box {
+  font-family: "Space Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding: 32px;
+  margin: 15px auto;
+  border: 1px solid #eee;
+  box-shadow: 10px 12px 24px rgba(0, 0, 0, 0.7);
+  background-color: white;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  letter-spacing: -0.25px;
+}
+
+#box ol {
+  padding-left: 50px;
+}
+
+#box ol li {
+  color: #4F4F4F;
+  padding-left: 16px;
+  margin-top: 35px;
+  position: relative;
+  font-size: 16px;
+  line-height: 20px;
+}
+#box ol li:before {
+  content: "";
+  display: block;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  position: absolute;
+  top: -12px;
+  left: -46px;
+}
+
+strong {
+  color: #292929;
+}
+
+#box ol.alternating-colors li:nth-child(odd):before {
+  border-color: #0BAD02;
+}
+#box ol.alternating-colors li:nth-child(even):before {
+  border-color: #2378D5;
+}
