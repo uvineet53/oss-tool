@@ -1,10 +1,20 @@
 body{
-    display: grid;
-    place-items: center;
+    overflow: hidden;
+    background-color: #93d2b3;
 }
 #main{
-    padding: 20px;
+    padding: calc(100%/4) 100px;
+    margin:auto;
     display: flex;
     flex-direction: column;
     width: 400px;
+    /* background-color:#EDDFB3; */
+}
+
+.image{
+    height: 100%;
+    width: 90%;
+    margin:10px 70px;
+    border-radius: 35px;
+    opacity: 0.86;
 }
