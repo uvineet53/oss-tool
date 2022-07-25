@@ -1,2 +1,1 @@
-server: uvicorn main:app --reload
-test: python renderResults.py
+web: gunicorn app:app
