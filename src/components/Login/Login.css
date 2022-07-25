@@ -1,0 +1,110 @@
+  .login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h4 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
+  }
+
+  .login__wrapper {
+    display: flex;
+    background-color: #1F2D47;
+    padding: 3rem;
+    border-radius: 15px;
+  }
+
+  .login__image {
+    border-radius: 15px;
+    padding: 40px;
+    background-color: #374661;
+  }
+
+  img {
+    padding: 20px;
+    height: 35vh;
+    object-fit: fill;
+  }
+
+  .login__container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #1F2D47;
+    padding: 30px;
+    width: 400px;
+    border-radius: 15px;
+  }
+
+  #login__textbox {
+    display: flex;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    background: transparent;
+    color: rgba(214, 220, 255, 0.862);
+    border-radius: 10px;
+    border: 1.5px solid rgb(214, 220, 255);
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    font-size: large;
+    margin-left: 10px;
+    color: rgba(214, 220, 255, 0.862);
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .login__btn {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    background-color: #8146FF;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .login__google {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid;
+    color: white;
+    background-color: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+
+  .login div {
+    margin-top: 7px;
+  }
+
+  .login__footer {
+    color: #9593B6;
+    font-size: 16px;
+  }
+
+  .redirect__link {
+    color: #8146FF;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .forgot__password {
+    color: whitesmoke;
+    font-size: 14px;
+  }
