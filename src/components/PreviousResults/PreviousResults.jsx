@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { db } from "../../config/firebase";
 import { query, collection, getDocs } from "firebase/firestore";
 import { useLocation } from 'react-router-dom';
+import './PreviousResults.css';
 
 function PreviousResults() {
     const [results, setResults] = useState([]);
@@ -24,11 +25,11 @@ function PreviousResults() {
         fetchResults();
     }, []);
     return (
-        <div>
-            <ol>
+        <div id='list'>
+            <ol className="alternating-colors">
                 {results.map(e => {
                     return (
-                        <li>{e.timeStamp.toDate().toString()}</li>
+                        <li><p>{e.timeStamp.toDate().toString()}</p></li>
                     );
                 })}
             </ol>

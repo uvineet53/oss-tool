@@ -5,6 +5,7 @@ import "./Dashboard.css";
 import { auth, db, logout } from "../../config/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import Scan from "../Scan/Scan";
+import ResponsiveAppBar from "./Navbar/Navbar";
 
 function Dashboard() {
     const [user, loading, error] = useAuthState(auth);
@@ -31,22 +32,19 @@ function Dashboard() {
         }
     }
     useEffect(() => {
-        if (loading) return;
+        if (loading) {return};
         if (!user) return navigate("/");
         fetchUserName();
     }, [user, loading]);
     return (
         <div className="dashboard">
+           <ResponsiveAppBar name email={user?.email} logout={logout} fetchPrevious={fetchPrevious}/>
             <div className="dashboard__container">
                 Logged in as
                 <div>{name}</div>
                 <div>{user?.email}</div>
-                <button className="dashboard__btn" onClick={logout}>
-                    Logout
-                </button>
-                <button className="dashboard__btn" onClick={fetchPrevious}>Previous Scans</button>
+                <Scan user = {user}/>
             </div>
-            <Scan user = {user}/>
         </div>
     );
 }

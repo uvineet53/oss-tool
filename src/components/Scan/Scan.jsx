@@ -32,14 +32,19 @@ function Scan({ user }) {
       repo: repo,
       rule: config,
     };
-    axios.post(url, data).then(async (e) => {
-      console.log(e.data);
-      if (e.data !== undefined) {
-        await saveResultData(user.uid, e.data);
-        navigate('/results', { state: e.data.results })
-      }
-    });
+    navigate('/loader');
+    setTimeout(() => {
+      axios.post(url, data).then(async (e) => {
+        console.log(e.data);
+        if (e.data !== undefined) {
+          await saveResultData(user.uid, e.data);
+          navigate('/results', { state: e.data.results });
+        }
+      });
+    }, 100);
   };
+
+
   return (
     <>
       <div id="main">

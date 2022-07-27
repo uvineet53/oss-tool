@@ -6,6 +6,7 @@ import Reset from "./components/Reset/Reset";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Results from "./components/Results/Results";
 import PreviousResults from "./components/PreviousResults/PreviousResults";
+import CircularIndeterminate from './components/Loader/Loader'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/results" element={<Results />} />
           <Route exact path="/previous-results" element={<PreviousResults />} />
+          <Route exact path="/loader" element={<CircularIndeterminate />} />
         </Routes>
       </Router>
     </div>

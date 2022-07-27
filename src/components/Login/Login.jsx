@@ -15,10 +15,13 @@ function Login() {
     const navigate = useNavigate();
     useEffect(() => {
         if (loading) {
-            // maybe trigger a loading screen
             return;
         }
-        if (user) navigate("/dashboard");
+        if (user){
+            localStorage.setItem('user',1);
+            navigate('/loader');
+            setTimeout(()=>{navigate("/dashboard");},3500);            
+        }
     }, [user, loading]);
     return (
         <div className="login">
