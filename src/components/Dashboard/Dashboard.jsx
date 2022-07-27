@@ -38,7 +38,7 @@ function Dashboard() {
     }, [user, loading]);
     return (
         <div className="dashboard">
-           <ResponsiveAppBar name email={user?.email} logout={logout} fetchPrevious={fetchPrevious}/>
+           <ResponsiveAppBar name={name} email={user?.email} logout={logout} fetchPrevious={fetchPrevious}/>
             <div className="dashboard__container">
                 Logged in as
                 <div>{name}</div>

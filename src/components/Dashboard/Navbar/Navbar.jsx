@@ -9,7 +9,6 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../../assets/logo.jpg";
 import "./Navbar.css";
 
@@ -46,11 +45,11 @@ const ResponsiveAppBar = (props) => {
               textDecoration: "none",
             }}
           >
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton>
               <Avatar src={logo} />
             </IconButton>
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }} >Dunder Mufflin</Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} >Dunder Mufflin</Box>
           <Typography
             variant="h5"
             noWrap
@@ -75,7 +74,8 @@ const ResponsiveAppBar = (props) => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src={`https://avatars.dicebear.com/api/initials/${props.name}.svg`}
+                  src={`https://avatars.dicebear.com/api/initials/${props.name}.svg?backgroundColors=deepOrange`}
+
                 />
               </IconButton>
             </Tooltip>

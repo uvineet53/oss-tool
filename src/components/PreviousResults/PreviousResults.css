@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 body{
-    background-color: #9593B6;
+    background-color: #8146FF;
 }
 
 #list {
@@ -44,8 +44,8 @@ body{
 }
 
 ol.alternating-colors li:nth-child(odd):before {
-  border-color: black;
+  border-color: black !important; 
 }
 ol.alternating-colors li:nth-child(even):before {
-  border-color: #8146FF;
+  border-color: #8146FF !important;
 }
