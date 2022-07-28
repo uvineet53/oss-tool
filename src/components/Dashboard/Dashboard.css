@@ -1,26 +1,96 @@
-.dashboard {
-    height: 100vh;
-    width: 100vw;
-    background-color: #8146FF;
-  }
-  .dashboard__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: rgba(214, 220, 255, 0.862);
-    padding: 50px;
-    margin:30px 50px;
-    border-radius: 10px;
-  }
-  .dashboard__btn {
-    padding: 10px;
-    font-size: 18px;
-    margin-top: 10px;
-    border: none;
-    color: white;
-    background-color: black;
-    cursor: pointer;
-  }
-  .dashboard div {
-    margin-top: 7px;
-  }
+
+#dashboard__wrapper{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #F7F7F7;
+}
+
+#navbar{
+  background-color: #FeFeFe;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 18vw;
+  font-size: 18px;
+  justify-content: space-between;
+}
+
+#dashboard__list{
+  list-style: none;
+  padding: 0;
+}
+
+#dashboard__list li{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.active{
+  color: white;
+  background-color:#0844f3;
+  font-weight: bold;
+  border-radius: 10px;
+}
+#dashboard__list li:hover{
+  color: white;
+  background-color:#0844f3;
+  border-radius: 10px;
+  transition: 100ms;
+}
+#dashboard__list div img{
+  width: 15vw;
+  object-fit: contain;
+  height: 100px;
+}
+#account{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 6px 20px 0 rgba(0, 0, 0, 0.12);  
+}
+
+#account__wrapper{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+#name{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+#name h5{
+  font-size: 14px;
+}
+
+#name h6{
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(129, 129, 129);
+}
+
+li{
+padding: 10px;
+}
+
+#logout{
+padding: 12px;
+border: none;
+font-size: 16px;
+background: rgb(255, 189, 189);
+border-radius: 8px;
+color: rgb(207, 56, 56);
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}

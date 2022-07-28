@@ -11,14 +11,26 @@ import { useNavigate } from 'react-router-dom';
 import rules from '../../data/rules'
 import { saveResultData } from "../../config/firebase";
 import "./Scan.css"
+import Results from "../Results/Results";
+import { MdRule } from 'react-icons/md';
+import { GiLevelThreeAdvanced } from 'react-icons/gi';
+import { IoLogoJavascript } from 'react-icons/io';
+import { FaReact } from 'react-icons/fa';
+import { LinearProgress } from "@mui/material";
 
 function Scan({ user }) {
   let url = "https://oss-tool-backend.herokuapp.com/scan";
   let sampleRepo = "https://github.com/0c34/govwa";
   const [config, setConfig] = useState("bsa");
   const [repo, setRepo] = useState(sampleRepo);
-  const navigate = useNavigate();
-
+  const [results, setResults] = useState([]);
+  const [showLoader, setShowLoader] = useState(false);
+  let ruleIcons = [
+    <MdRule style={{ marginRight: "10px", color: "green" }} />,
+    <GiLevelThreeAdvanced style={{ marginRight: "10px", color: "red" }} />,
+    <IoLogoJavascript style={{ marginRight: "10px", color: "orange" }} />,
+    <FaReact style={{ marginRight: "10px", color: "blue" }} />
+  ]
   const handleConfig = (e) => {
     setConfig(e.target.value);
   };
@@ -28,25 +40,30 @@ function Scan({ user }) {
   const startScan = () => {
     console.log(user.uid)
     console.log(repo, config);
+    setShowLoader(true);
     let data = {
       repo: repo,
       rule: config,
     };
-    navigate('/loader');
-    setTimeout(() => {
+    try {
       axios.post(url, data).then(async (e) => {
         console.log(e.data);
         if (e.data !== undefined) {
           await saveResultData(user.uid, e.data);
-          navigate('/results', { state: e.data.results });
+          setShowLoader(false);
+          setResults(e.data.results);
         }
       });
-    }, 100);
+    }
+    catch (e) {
+      console.log(e);
+      setShowLoader(false);
+    }
   };
 
 
   return (
-    <>
+    <div id="scan__wrapper">
       <div id="main">
         <TextField
           required
@@ -57,22 +74,26 @@ function Scan({ user }) {
           onChange={handleRepo}
         />
         <FormControl>
-          <FormLabel >
-            Scan Config
+          <FormLabel style={{ fontSize: "18px", marginBottom: "10px" }}>
+            Scanning Rules (Select One):
           </FormLabel>
           <RadioGroup
             defaultValue={config}
             value={config}
             onChange={handleConfig}
           >{
-              rules.map(e => {
+              rules.map((e, index) => {
                 return (
-                  <FormControlLabel
-                    value={e.value}
-                    control={<Radio />}
-                    label={e.name}
-                  />
-                );
+                  <div style={{ marginBottom: "10px" }}>
+                    <hr style={{ border: "1px dotted grey", marginBottom: "10px" }} />
+                    <h4 style={{ color: "black", display: "flex", alignItems: "center" }}>{ruleIcons[index]}{e.label}</h4>
+                    {e.rule.map((rule) => <FormControlLabel
+                      value={rule.value}
+                      control={<Radio />}
+                      label={rule.name}
+                    />)}
+                  </div>
+                )
               })
             }
           </RadioGroup>
@@ -80,8 +101,10 @@ function Scan({ user }) {
         <Button variant="contained" color="error" onClick={startScan}>
           Scan
         </Button>
+        {showLoader === true?<LinearProgress style={{marginTop:"10px"}}/>:""}
       </div>
-    </>
+      <Results results={results} />
+    </div>
   );
 }
 

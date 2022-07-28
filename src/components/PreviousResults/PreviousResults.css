@@ -1,51 +1,52 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-body{
-    background-color: #8146FF;
-}
-
 #list {
-  font-family: "Space Mono", monospace;
   display: flex;
   flex-direction: column;
-  max-width: 420px;
-  padding: 32px;
-  margin: 60px auto;
-  border: 1px solid #eee;
-  background-color: #fff;
-  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.06);
-  border-radius: 15px;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  height: 80vh;
+  border-radius: 10px;
+  margin: 25px;
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
+.activeResult {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
 }
 
 #list li {
-  color: #4F4F4F;
-  text-align: right;
-  padding-left: 26px;
+  text-align: left;
   margin: 20px 0px;
   position: relative;
   font-size: 16px;
   line-height: 20px;
-}
-#list li:before {
-  content: "";
-  display: block;
-  height: 42px;
-  width: 42px;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  position: absolute;
-  top: -12px;
-  left: -35px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid whitesmoke;
+  cursor: pointer;
 }
 
-ol.alternating-colors li:nth-child(odd):before {
-  border-color: black !important; 
+#list li:hover {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
 }
-ol.alternating-colors li:nth-child(even):before {
-  border-color: #8146FF !important;
+
+.prev__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  width: 80vw;
+  height: 100vh;
 }

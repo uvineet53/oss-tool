@@ -1,83 +1,47 @@
-#vuln,
-#vuln::before,
-#vuln::after {
-  box-sizing: border-box;
+#vulnerabilities {
+  background-color: #0844f3;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: 80vh;
+  border-radius: 10px;
+  margin: 25px;
+  color: white;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.18);  
+}
+.container{
+overflow: scroll;
+}
+.episode{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  border-bottom: 2px dotted white;
+  padding: 15px;
+}
+.episode h4{
+  margin-right: 10px;
+}
+.episode__content{
+  display: flex;
+  flex-direction: column;
+}
+.title{
+font-weight: bold;
+font-size: 16px;
+margin-bottom: 10px;
+}
+.story{
+  font-style: italic;
+}
+.total_number{
+  font-style: italic;
 }
 
-
-#vuln {
-  background: #8d5cf8;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  padding:20px 10px;
-  margin: 0;
-}
-
-#vuln p {
-  margin: 0 0 13px 0;
-}
-
-#vuln a {
-  color: #fff;
-}
-
-#vuln .center { text-align: center;color:black; }
-
-#vuln .container {
-  width: 95%;
-  max-width: 1220px;
-  margin: 0 auto;
-}
-
-#vuln .episode {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  position: relative;
-  margin:80px 0;
-}
-
-article:nth-child(2)
-{
-	margin-top:20px;
-}
-.episode__number {
-  font-size: 10vw;
-  font-weight: 600;
-  padding: 10px 0;
-  position: sticky;
-  top: 0;
-  text-align: center;
-  color:whitesmoke;
-  height: calc(10vw + 20px);
-  transition: all 0.2s ease-in;
-}
-
-.episode__content {
-  border-top: 2px solid #fff;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-gap: 10px;
-  padding: 15px 0;
-}
-
-.episode__content .title {
-  font-weight: 700;
-  color:rgba(214, 220, 255);
-}
-
-.episode__content .story {
-  line-height: 26px;
-  font-size: 20px;
-}
-
-@media (max-width: 600px) {
-  .episode__content {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 576px) {
-  .episode__content .story {
-    font-size: 15px;
-  }
+.empty__episode{
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

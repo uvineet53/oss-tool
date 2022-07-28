@@ -7,22 +7,24 @@ import { MdAlternateEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
 import login from "../../assets/login.svg";
+import { LinearProgress } from "@mui/material";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [user, loading, error] = useAuthState(auth);
+    const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         if (loading) {
             return;
         }
-        if (user){
-            localStorage.setItem('user',1);
-            navigate('/loader');
-            setTimeout(()=>{navigate("/dashboard");},3500);            
-        }
-    }, [user, loading]);
+        if (error) setShowLoader(false);
+        if (user) {
+            setShowLoader(false);
+            navigate("/dashboard")
+        };
+    }, [user, loading, error]);
     return (
         <div className="login">
             <div className="login__wrapper">
@@ -48,7 +50,10 @@ function Login() {
                     </div>
                     <button
                         className="login__btn"
-                        onClick={() => logInWithEmailAndPassword(email, password)}
+                        onClick={() => {
+                            setShowLoader(true);
+                            logInWithEmailAndPassword(email, password)
+                        }}
                     >
                         Login
                     </button>
@@ -60,6 +65,7 @@ function Login() {
                     </div>
                     <div>
                         <Link to="/reset" className="forgot__password">Forgot Password</Link>
+                        {showLoader === true ? <LinearProgress style={{ marginTop: "10px" }} /> : ""}
                     </div>
                 </div>
                 <div className="login__image">

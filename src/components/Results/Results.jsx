@@ -1,19 +1,22 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import "./Results.css";
+import {FaGlassWhiskey} from 'react-icons/fa';
 
-function Results() {
-  const { state } = useLocation();
-  let counter = 0;
+function Results({ results }) {
   return (
-    <>
-      <div id="vuln">
+    <div id="vulnerabilities">
+        <h1 className="center">Vulnerabilities</h1>
         <div className="container">
-          <h1 className="center">Vulnerabilities</h1>
-          {state.map((e) => {
+        {results.length == 0 ? <div className="empty__episode">
+          <FaGlassWhiskey size="100px" style={{marginBottom:"10px"}}/>
+          No Active Scans Found!
+        </div> :
+          <div>
+            <div className="total_number">{results.length} Vulnerabilities Found!</div> 
+            {results.map((e,index) => {
             return (
-              <article className="episode">
-                {counter<10?<div className="episode__number">0{counter++}</div>:<div className="episode__number">{counter++}</div>}
+              <div className="episode">
+                <h4>{index+1}.</h4>
                 <div className="episode__content">
                   <div className="title">{e.file}</div>
                   <div className="story">
@@ -22,12 +25,13 @@ function Results() {
                     })}
                   </div>
                 </div>
-              </article>
+              </div>
             );
           })}
-        </div>
+          </div>
+        }
       </div>
-    </>
+    </div>
   );
 }
 

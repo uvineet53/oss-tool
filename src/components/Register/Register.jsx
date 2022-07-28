@@ -12,12 +12,14 @@ import { FaRegUserCircle } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
 import login from "../../assets/login.svg";
+import { LinearProgress } from "@mui/material";
 
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [user, loading, error] = useAuthState(auth);
+    const [showLoader, setShowLoader] = useState(false);
     const navigate = useNavigate();
     const register = () => {
         if (!name) alert("Please enter name");
@@ -25,14 +27,18 @@ function Register() {
     };
     useEffect(() => {
         if (loading) return;
-        if (user) navigate('/dashboard', { replace: true });
+        if (error) setShowLoader(false);
+        if (user) {
+            if (error) setShowLoader(false);
+            navigate('/dashboard', { replace: true });
+        }
     }, [user, loading]);
 
     return (
         <div className="register">
             <div className="register__wrapper">
                 <div className="register__container">
-                <h4>Sign Up for an account</h4>
+                    <h4>Sign Up for an account</h4>
                     <div className="register__textbox">
                         <FaRegUserCircle color="white" size={22} />
                         <input
@@ -60,17 +66,21 @@ function Register() {
                             placeholder="Password"
                         />
                     </div>
-                    <button className="register__btn" onClick={register}>
+                    <button className="register__btn" onClick={() => {
+                        setShowLoader(true);
+                        register()
+                    }}>
                         Register
                     </button>
                     <button
                         className="register__google"
                         onClick={signInWithGoogle}
                     >
-                    <FcGoogle size={20} style={{ marginRight: "10px", marginLeft: "-10px" }} />     Register with Google
+                        <FcGoogle size={20} style={{ marginRight: "10px", marginLeft: "-10px" }} />     Register with Google
                     </button>
                     <div className="register__footer">
                         Already have an account? <Link to="/" className="redirect__link">Login</Link>
+                        {showLoader === true ? <LinearProgress style={{ marginTop: "10px" }} /> : ""}
                     </div>
                 </div>
                 <div className="register__image">
