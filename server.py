@@ -1,3 +1,4 @@
+from unittest import result
 from flask import Flask, request
 from flask_cors import CORS
 from scan import scan
@@ -14,7 +15,10 @@ def root():
 @app.post("/scan")
 def run_scan():
     repo = request.json
-    return {"results": scan(repo=repo)}
+    data = scan(repo=repo)
+    total_files = data["total_files"]
+    results = data["results"]
+    return {"results": results,"total_files":total_files}
 
 
 if __name__ == "__main__":

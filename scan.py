@@ -2,7 +2,8 @@ import subprocess
 import json
 import re
 import uuid
-from constants import rules,pattern
+from constants import rules, pattern
+
 
 def scan(repo):
     try:
@@ -14,6 +15,13 @@ def scan(repo):
             capture_output=True,
             text=True,
         )
+        total_files = subprocess.run(
+            ["tree", fileName],
+            capture_output=True,
+            text=True,
+        )
+        files = total_files.stdout.split("directories, ")[1].split("files")[0].strip();
+        print(files)
         if repo["rule"] in rules:
             result = subprocess.run(
                 rules[repo["rule"]], cwd=fileDir, capture_output=True, text=True
@@ -40,8 +48,7 @@ def scan(repo):
             finalData.append(
                 {"file": value[0 : value.find("\n")].strip(), "issues": issues}
             )
-        return finalData
-    except e as Exception:
+        return {"results":finalData,"total_files":files}
+    except Exception as e :
         print(e)
         return None
-
