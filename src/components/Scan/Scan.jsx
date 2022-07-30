@@ -24,6 +24,7 @@ function Scan({ user }) {
   const [config, setConfig] = useState("bsa");
   const [repo, setRepo] = useState(sampleRepo);
   const [results, setResults] = useState([]);
+  const [files, setFiles] = useState(0);
   const [showLoader, setShowLoader] = useState(false);
   let ruleIcons = [
     <MdRule style={{ marginRight: "10px", color: "green" }} />,
@@ -52,6 +53,7 @@ function Scan({ user }) {
           await saveResultData(user.uid, e.data);
           setShowLoader(false);
           setResults(e.data.results);
+          setFiles(e.data.total_files)
         }
       });
     }
@@ -103,7 +105,7 @@ function Scan({ user }) {
         </Button>
         {showLoader === true?<LinearProgress style={{marginTop:"10px"}}/>:""}
       </div>
-      <Results results={results} />
+      <Results results={results} files={files}/>
     </div>
   );
 }

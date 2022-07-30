@@ -65,7 +65,7 @@ function Dashboard() {
                                 <h6>{user?.email}</h6>
                             </div>
                         </div>
-                        <button id="logout"><FiLogOut style={{marginRight:"10px"}}/>Logout</button>
+                        <button id="logout" onClick={logout}><FiLogOut style={{marginRight:"10px"}}/>Logout</button>
                     </div>
 
                 </div>

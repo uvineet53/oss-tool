@@ -29,7 +29,7 @@ function Login() {
         <div className="login">
             <div className="login__wrapper">
                 <div className="login__container">
-                    <h4>Login to your account</h4>
+                    <h4 style={{color:"white"}}>Login to your account</h4>
                     <div id="login__textbox">
                         <MdAlternateEmail color="white" size={22} />
                         <input

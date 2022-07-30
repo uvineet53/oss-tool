@@ -37,11 +37,12 @@ function PreviousResults({ user }) {
                 <h1 style={{ textAlign: "center" }}>Your Scan History</h1>
                 {showLoader === true ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}><CircularProgress /></div> :
                     <ul>
-                        {results.map((e, index) => {
-                            return (
-                                <li className={index == currResult ? "activeResult" : ""} onClick={() => setCurrResult(index)}><p>{e.timeStamp.toDate().toString()}</p></li>
-                            );
-                        })}
+                        {results.length === 0 ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}>No Previous Records</div>
+                            : results.map((e, index) => {
+                                return (
+                                    <li className={index == currResult ? "activeResult" : ""} onClick={() => setCurrResult(index)}><p>{e.timeStamp.toDate().toString()}</p></li>
+                                );
+                            })}
                     </ul>
                 }
             </div>

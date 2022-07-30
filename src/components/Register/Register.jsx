@@ -38,7 +38,7 @@ function Register() {
         <div className="register">
             <div className="register__wrapper">
                 <div className="register__container">
-                    <h4>Sign Up for an account</h4>
+                    <h4 style={{color:"white"}}>Sign Up for an account</h4>
                     <div className="register__textbox">
                         <FaRegUserCircle color="white" size={22} />
                         <input
